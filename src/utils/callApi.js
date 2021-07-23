@@ -1,4 +1,4 @@
-const baseUrl = process.env.MOVIE_BASE_URI
+const baseUrl = 'http://kobis.or.kr/kobisopenapi/webservice/rest/movie'
 
 export const callApi = async (param) => {
   const response = await fetch(`${baseUrl}${param}`)

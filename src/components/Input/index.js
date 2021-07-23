@@ -18,7 +18,7 @@ export default function Input({
     <input
       type={type}
       value={value}
-      onChange={onChange}
+      onChange={(e) => onChange(e.target.value)}
       disabled={disabled}
       style={style}
       placeholder={placeholder}

@@ -18,12 +18,8 @@ export default class App extends Component {
           </ul>
         </nav>
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/search">
-            <MovieSearch />
-          </Route>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/search" component={MovieSearch} />
         </Switch>
       </Router>
     )

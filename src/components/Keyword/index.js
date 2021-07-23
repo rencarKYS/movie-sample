@@ -2,7 +2,7 @@ import React from 'react'
 import randomColor from 'utils/randomNum';
 import styles from './Keyword.module.scss';
 
-export default function Keyword({
+function Keyword({
   keyword,
   onClick
 }) {
@@ -16,3 +16,5 @@ export default function Keyword({
     </div>
   )
 }
+
+export default React.memo(Keyword)

@@ -30,5 +30,13 @@
     flex-wrap: wrap;
   }
 
+  .movie_list_area {
+    .movie_info {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid white;
+    }
+  }
+
 }
 
