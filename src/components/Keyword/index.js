@@ -9,7 +9,7 @@ function Keyword({
   return (
     <div 
       className={styles.keyword_wrap} 
-      onClick={onClick}
+      onClick={() => onClick(keyword)}
       style={{ backgroundColor: `rgb(${[randomColor(), randomColor(), randomColor()]})` }}
     >
       <span>{keyword}</span>

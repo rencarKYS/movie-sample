@@ -32,10 +32,18 @@
 
   .movie_list_area {
     .movie_info {
-      margin-bottom: 10px;
-      padding-bottom: 10px;
+      position: relative;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
       border-bottom: 1px solid white;
     }
+  }
+
+  .detail_movie {
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
   }
 
 }
