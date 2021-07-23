@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import InputButton from 'components/InputButton';
 import Button from 'components/Button';
 import Loading from 'components/Loading';
+import Modal from 'components/Modal';
 import Keyword from 'components/Keyword';
 import { callApi } from 'utils/callApi';
 import { dateParser } from 'utils/dataParser';
@@ -15,7 +16,8 @@ export default class MovieSearch extends Component {
       title: null,
       keywords: ['블랙위도우', '캡틴아메리카', '보스베이비', '포레스트검프', '컨저링', '악마를보았다', '사도', '크루엘라', '랑종'],
       searchMovieList: null,
-      loading: null
+      loading: null,
+      modalStatus: null
     }
   }
 
@@ -46,12 +48,21 @@ export default class MovieSearch extends Component {
     }
   }
 
+  movieDetailModal = () => {
+    return (
+      <Modal title="test" />
+    )
+  }
+
   render() {
-    const { keywords, title, searchMovieList, loading } = this.state
+    const { keywords, title, searchMovieList, loading, modalStatus } = this.state
     return (
       <>
         {
           loading === false && <Loading/>
+        }
+        {
+          modalStatus === true && <Modal close={() => this.setState({ modalStatus: false })} title="test" />
         }
         <div className={styles.movie_search_wrap}>
           <form onSubmit={this.handleSubmit}>
@@ -87,7 +98,7 @@ export default class MovieSearch extends Component {
                       <Button
                         btnName="자세히보기"
                         className={styles.detail_movie}
-                        onClick={() => console.log(123)}
+                        onClick={() => this.setState({ modalStatus: true })}
                       />
                     </li>
                   )

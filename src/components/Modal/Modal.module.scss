@@ -1,0 +1,32 @@
+.modal_wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+
+  .modal {
+    position: relative;
+    background: white;
+    border: 1px solid #f1f1f1;
+    padding: 10px;
+    border-radius: 10px;
+    min-width: 450px;
+    min-height: 300px;
+
+    .close {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      cursor: pointer;
+      font-size: 15px;
+      background: none;
+      border: none;
+    }
+  }
+}
