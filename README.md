@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# Movie App 만들기
+- [영화진흥위원회 api](http://www.kobis.or.kr/kobisopenapi/)
+- [네이버 영화검색 api](https://developers.naver.com/docs/search/movie/)
+- [scss 스타일 작성](https://sass-lang.com/guide)
+- [express Nodejs server](https://expressjs.com/ko/starter/installing.html)
+- CRA 로 생성한 react 어플리케이션
+- [fetch 비동기 콜 요청](https://developer.mozilla.org/ko/docs/Web/API/Fetch_API/Using_Fetch)
+- Class Component 로 만들기
+- 검색기능
+- 키워드 검색
+- 영화 상세정보보기 모달
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### setting
+설치
+```bash
+npx create-react-app app-name
+```
 
-## Available Scripts
+필요없는 파일 제거
+```bash
+src/logo.svg
+src/App.test.js
+src/App.css
+src/index.css
+public/logo192.png
+public/logo512.png
+```
 
-In the project directory, you can run:
+패키지 파일 설치
+```bash
+yarn add react-router-dom
+yarn add node-sass
+```
 
-### `yarn start`
+환경변수 설정
+```bash
+.env.development.local 파일 생성
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+`REACT_APP_MOVIE_KEY={key_number}`  영화 진흥 위원회에서 발급받은 키값을 환경변수로 설정  
+`MOVIE_BASE_URI=http://kobis.or.kr/kobisopenapi/webservice/rest/movie` 영화 진흥위원회 base api 주소
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+jsconfig.json 설정
+```js
+{
+  "compilerOptions": {
+    "baseUrl": "./src"
+  }
+}
+```
 
-### `yarn test`
+폴더 및 파일생성
+```bash
+src/components
+- Button/index.js
+- Input/index.js
+- InputButton/index.js
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+src/Pages
+- Home/index.js
+- MovieSearch/index.js
 
-### `yarn build`
+src/styles
+- global.scss
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+src/utils
+- callApi.js
+```
