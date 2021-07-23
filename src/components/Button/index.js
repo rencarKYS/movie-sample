@@ -17,3 +17,5 @@ export default function Button({
     </button>
   )
 }
+
+<button style="color: ryellow"></button>

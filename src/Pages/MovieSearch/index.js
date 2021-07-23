@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import InputButton from 'components/InputButton';
+import Button from 'components/Button';
 import Keyword from 'components/Keyword';
 import { callApi } from 'utils/callApi';
 import { dateParser } from 'utils/dataParser';

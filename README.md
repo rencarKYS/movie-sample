@@ -30,6 +30,9 @@ public/logo512.png
 ```bash
 yarn add react-router-dom
 yarn add node-sass
+
+npm install react-router-dom --save
+npm install node-sass --save
 ```
 
 환경변수 설정

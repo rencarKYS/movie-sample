@@ -5,8 +5,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import MovieSearch from "./Pages/MovieSearch";
-import Home from './Pages/Home';
+import MovieSearch from "Pages/MovieSearch";
+import Home from 'Pages/Home';
 export default class App extends Component {
   render() {
     return (
