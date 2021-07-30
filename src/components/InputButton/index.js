@@ -5,10 +5,11 @@ import styles from './InputButton.module.scss';
 
 export default function InputButton({
   propsInput,
-  propsButton
+  propsButton,
+  className
 }) {
   return (
-    <div className={styles.input_button_wrap}>
+    <div className={`${styles.input_button_wrap} ${className}`}>
       <Input {...propsInput} />
       <Button {...propsButton} />
     </div>

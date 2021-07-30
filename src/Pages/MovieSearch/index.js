@@ -20,7 +20,23 @@ export default class MovieSearch extends Component {
       modalStatus: null,
       selectMovieInfo: null,
       naverMovieInfo: null,
+      animation: null,
     }
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', (e) => {
+      if (window.pageYOffset > 141) {
+        this.setState({
+          animation: true
+        })
+      }
+      if (this.state.animation && window.pageYOffset < 141) {
+        this.setState({
+          animation: false
+        })
+      }
+    })
   }
 
   componentDidUpdate() {
@@ -81,7 +97,7 @@ export default class MovieSearch extends Component {
   }
 
   render() {
-    const { keywords, title, searchMovieList, loading, modalStatus } = this.state
+    const { keywords, title, searchMovieList, loading, modalStatus, animation } = this.state
     return (
       <>
         { loading === false && <Loading/> }
@@ -89,6 +105,7 @@ export default class MovieSearch extends Component {
         <div className={styles.movie_search_wrap}>
           <form onSubmit={this.handleSubmit}>
             <InputButton
+              className={animation ? styles.on : ''}
               propsInput={{
                 type: 'text',
                 className: styles.search_input,
