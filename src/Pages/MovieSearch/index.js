@@ -4,7 +4,7 @@ import Button from 'components/Button';
 import Loading from 'components/Loading';
 import Modal from 'components/Modal';
 import Keyword from 'components/Keyword';
-import { callApi } from 'utils/callApi';
+import { callApi, callApiNaver } from 'utils/callApi';
 import { dateParser } from 'utils/dataParser';
 import styles from './MovieSearch.module.scss'
 
@@ -17,7 +17,17 @@ export default class MovieSearch extends Component {
       keywords: ['블랙위도우', '캡틴아메리카', '보스베이비', '포레스트검프', '컨저링', '악마를보았다', '사도', '크루엘라', '랑종'],
       searchMovieList: null,
       loading: null,
-      modalStatus: null
+      modalStatus: null,
+      selectMovieInfo: null,
+      naverMovieInfo: null,
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.state.modalStatus) {
+      document.querySelector('body').style.overflow = 'hidden';
+    } else {
+      document.querySelector('body').style.overflow = 'auto';
     }
   }
 
@@ -48,9 +58,25 @@ export default class MovieSearch extends Component {
     }
   }
 
+  viewDetail = async (data) => {
+    this.setState({ loading: false })
+    const result = await callApiNaver(`?query=${data.movieNm}&yearfrom=${data.prdtYear}&yearto=${data.prdtYear}`)
+    this.setState({
+      naverMovieInfo: result.items[0],
+      selecMovieInfo: data,
+      loading: true,
+      modalStatus: true,
+    })
+  }
+
   movieDetailModal = () => {
+    const { naverMovieInfo, selecMovieInfo } = this.state
     return (
-      <Modal title="test" />
+      <Modal 
+        close={() => this.setState({ modalStatus: false })} 
+        naverData={naverMovieInfo}
+        selectData={selecMovieInfo}
+      />
     )
   }
 
@@ -58,12 +84,8 @@ export default class MovieSearch extends Component {
     const { keywords, title, searchMovieList, loading, modalStatus } = this.state
     return (
       <>
-        {
-          loading === false && <Loading/>
-        }
-        {
-          modalStatus === true && <Modal close={() => this.setState({ modalStatus: false })} title="test" />
-        }
+        { loading === false && <Loading/> }
+        { modalStatus === true && this.movieDetailModal() }
         <div className={styles.movie_search_wrap}>
           <form onSubmit={this.handleSubmit}>
             <InputButton
@@ -89,16 +111,15 @@ export default class MovieSearch extends Component {
             <ul>
               {
                 searchMovieList?.map((movie, i) => {
-                  console.log(movie)
                   return (
                     <li key={i} className={styles.movie_info}>
-                      <p>제목 : {movie.movieNm}</p>
-                      <p>장르 : {movie.genreAlt}</p>
-                      <p>개봉일 : {dateParser(movie.openDt)}</p>
+                      <p>제목 : {movie.movieNm || '-'}</p>
+                      <p>장르 : {movie.genreAlt || '-'}</p>
+                      <p>개봉일 : {dateParser(movie.openDt) || '-'}</p>
                       <Button
                         btnName="자세히보기"
                         className={styles.detail_movie}
-                        onClick={() => this.setState({ modalStatus: true })}
+                        onClick={() => this.viewDetail(movie)}
                       />
                     </li>
                   )

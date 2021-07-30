@@ -1,5 +1,5 @@
 .modal_wrap {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -27,6 +27,23 @@
       font-size: 15px;
       background: none;
       border: none;
+    }
+
+    .header {
+      font-size: 30px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .content {
+      display: flex;
+      padding: 30px;
+      img {
+        margin-right: 20px;
+      }
+      li {
+        margin-bottom: 20px;
+      }
     }
   }
 }

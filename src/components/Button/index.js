@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Button.module.scss';
 
-export default function Button({
+function Button({
   style,
   btnName,
   className,
@@ -17,5 +17,4 @@ export default function Button({
     </button>
   )
 }
-
-<button style="color: ryellow"></button>
+export default React.memo(Button)

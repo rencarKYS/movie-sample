@@ -58,6 +58,11 @@ src/components
 - Button/index.js
 - Input/index.js
 - InputButton/index.js
+- Keyword/index.js
+- Loading/index.js
+- Modal/index.js
+
+src/images
 
 src/Pages
 - Home/index.js
@@ -68,8 +73,8 @@ src/styles
 
 src/utils
 - callApi.js
+- dataParser.js
+- randomNum.js
 ```
 
 
-
-## heroku 배포

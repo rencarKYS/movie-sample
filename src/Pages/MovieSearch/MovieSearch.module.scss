@@ -31,11 +31,16 @@
   }
 
   .movie_list_area {
+    margin-top: 50px;
     .movie_info {
       position: relative;
       margin-bottom: 20px;
       padding-bottom: 20px;
       border-bottom: 1px solid white;
+      p {
+        width: calc(100% - 100px);
+        margin-bottom: 10px;
+      }
     }
   }
 
